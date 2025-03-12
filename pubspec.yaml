@@ -1,0 +1,30 @@
+name: potfolio_1
+description: "A new Flutter project."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  font_awesome_flutter: ^10.2.1
+  url_launcher: ^6.1.4
+  webview_flutter: ^4.4.4
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+
+flutter:
+  uses-material-design: true
+  assets:
+
+    - assets/img/w19.jpg
+    - assets/img/prog.jpg
+    - assets/img/ww.jpg
