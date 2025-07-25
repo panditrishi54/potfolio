@@ -228,12 +228,12 @@ class _HomeSectionState extends State<HomeSection> with TickerProviderStateMixin
                   children: [
                     // Left Side - Profile Picture (Rectangle)
                     Container(
-                      width: constraints.maxWidth * 0.35, // 35% of screen width
+                      width: constraints.maxWidth * 0.26, // 35% of screen width
                       height: 700, // Fixed height
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16), // Rounded rectangle
                         image: const DecorationImage(
-                          image: AssetImage('assets/img/prog.jpg'), // Your profile image
+                          image: AssetImage('assets/img/aa11.jpg'), // Your profile image
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -241,44 +241,40 @@ class _HomeSectionState extends State<HomeSection> with TickerProviderStateMixin
                     const SizedBox(width: 24), // Space between image and text
 
                     // Right Side - Information
+                    // Right Side - Information
                     Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Hi, I am Rishi Bhardwaj!',
-                            style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Hi, I am Rishi Bhardwaj!',
+                              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            'A passionate software developer specializing in Flutter,'
-                                'Firebase, and UI/UX design. I love building innovative '
-                                'and efficient applications that solve real-world problems.'
-                                'Motivated and detail-oriented Software Developer with expertise in'
-                            'Python, Java, and IoT solutions. Experienced in building automation'
-                          'and web-based systems that enhance efficiency and user experience.'
-                          'Developed an IoT home automation system that improved energy'
-                          'efficiency by 25%. Proficient in Firebase and responsive web'
-                          'development. Proven ability to collaborate within cross-functional'
-                          'teams and contribute to open-source projects, delivering innovative'
-                            'solutions for complex challenges.',
-
-                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: Colors.black,
-                              fontSize: 19,
-                              fontStyle: FontStyle.italic,
+                            const SizedBox(height: 10),
+                            Text(
+                              '• Passionate Software Developer specializing in Flutter, Firebase, and UI/UX design.\n'
+                                  '• Expertise in Python, Java, and IoT solutions.\n'
+                                  '• Proficient in building innovative, efficient applications to solve real-world problems.\n'
+                                  '• Experienced in developing automation and responsive web-based systems to enhance efficiency and user experience.\n'
+                                  '• .\n'
+                                  '• Skilled in Firebase and responsive web development.\n'
+                                  '• Proven ability to collaborate in cross-functional teams and contribute to open-source projects.\n'
+                                  '• Motivated and detail-oriented, delivering innovative solutions for complex challenges.',
+                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                color: Colors.black,
+                                fontSize: 25,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 30),
-
-                          // Clickable "Get in Touch" Text
-
-                        ],
+                            const SizedBox(height: 30),
+                          ],
+                        ),
                       ),
-                    ),
+                    )
                   ],
                 );
               },
@@ -531,12 +527,14 @@ class Project {
   final String description;
   final String techStack;
   final String projectUrl;
+  final String demoUrl;
 
   const Project({
     required this.title,
     required this.description,
     required this.techStack,
     required this.projectUrl,
+    required this.demoUrl,
   });
 }
 
@@ -544,41 +542,56 @@ class ProjectSection extends StatelessWidget {
   const ProjectSection({Key? key}) : super(key: key);
 
   final List<Project> projects = const [
+
+    Project(
+        title: "Food Donor App",
+        description: "A Flutter app connecting food donors with charities to minimize food waste.",
+        techStack: "Flutter, Dart, Firebase Authentication, Firestore",
+        projectUrl: "https://github.com/panditrishi54/donationapp.git",
+        demoUrl: "https://food-donation-ceafc.web.app/"
+    ),
+    Project(
+        title: "Portfolio Website",
+        description: "A personal portfolio built using Flutter for showcasing projects and skills.",
+        techStack: "Flutter, Dart, UI/UX Design",
+        projectUrl: "https://github.com/panditrishi54/portfolio",
+        demoUrl: "https://rishipotfolio.netlify.app/"
+    ),
+
+
     Project(
       title: "Gym Registration Website",
       description: "Developed a responsive gym website that facilitates user registration and login.",
       techStack: "HTML, CSS, Bootstrap, JavaScript, Firebase",
       projectUrl: "https://github.com/panditrishi54/GYM_MANAGEMENT_WEB", // Replace with actual link
+      demoUrl: "#",
     ),
-
-    Project(
-      title: "Food Donor App",
-      description: "A Flutter app connecting food donors with charities to minimize food waste.",
-      techStack: "Flutter, Dart, Firebase Authentication, Firestore",
-      projectUrl: "https://github.com/panditrishi54/donationapp.git",
-    ),
-
     Project(
       title: "Home Automation System",
       description: "Developed a home automation system using ESP32 for smart home control.",
       techStack: "C++, Arduino, IoT",
       projectUrl: "https://github.com/panditrishi54/home-automation",
-    ),
-    Project(
-      title: "Portfolio Website",
-      description: "A personal portfolio built using Flutter for showcasing projects and skills.",
-      techStack: "Flutter, Dart, UI/UX Design",
-      projectUrl: "https://github.com/panditrishi54/portfolio",
+        demoUrl: "#"
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('')),
+      appBar: AppBar(
+        title: const Text(
+          'Projects',
+          style: TextStyle(fontStyle: FontStyle.italic,
+            fontSize: 24,
+            fontWeight: FontWeight.bold, // Makes the text bold
+
+          ), // Makes the text italic
+
+        ),
+        centerTitle: true, // Centers the title
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-
         child: ListView.builder(
           itemCount: projects.length,
           itemBuilder: (context, index) {
@@ -589,7 +602,6 @@ class ProjectSection extends StatelessWidget {
               elevation: 5,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
-
               ),
               margin: const EdgeInsets.symmetric(vertical: 10),
               child: Padding(
@@ -610,8 +622,6 @@ class ProjectSection extends StatelessWidget {
                     Text(
                       project.description,
                       style: const TextStyle(fontSize: 20, color: Colors.black),
-
-
                     ),
                     const SizedBox(height: 8),
                     Text(
@@ -621,21 +631,42 @@ class ProjectSection extends StatelessWidget {
                     const SizedBox(height: 12),
                     Align(
                       alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: () async {
-                          final Uri url = Uri.parse(project.projectUrl);
-                          if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-                            debugPrint("Could not open ${project.projectUrl}");
-                          }
-                        },
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.white,
-
-                          backgroundColor: Colors.blueAccent,
-                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                        ),
-                        child: const Text("View Project"),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          if (project.demoUrl != null) // Show demo button only if demoUrl exists
+                            TextButton(
+                              onPressed: () async {
+                                final Uri url = Uri.parse(project.demoUrl!);
+                                if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+                                  debugPrint("Could not open ${project.demoUrl}");
+                                }
+                              },
+                              style: TextButton.styleFrom(
+                                foregroundColor: Colors.white,
+                                backgroundColor: Colors.blue, // Different color to distinguish from View Project
+                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                              ),
+                              child: const Text("View Demo"),
+                            ),
+                          const SizedBox(height: 20), // Space between buttons
+                          TextButton(
+                            onPressed: () async {
+                              final Uri url = Uri.parse(project.projectUrl);
+                              if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+                                debugPrint("Could not open ${project.projectUrl}");
+                              }
+                            },
+                            style: TextButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor: Colors.blueAccent,
+                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            ),
+                            child: const Text("View Project"),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -648,8 +679,6 @@ class ProjectSection extends StatelessWidget {
     );
   }
 }
-
-
 class ContactMeSection extends StatelessWidget {
   const ContactMeSection({Key? key}) : super(key: key);
 
@@ -714,7 +743,7 @@ class ContactMeSection extends StatelessWidget {
     );
   }
 
-  // Function to Build Contact Tiles
+// Function to Build Contact Tiles
   Widget _buildContactTile(IconData icon, String title, String subtitle, String url) {
     return ListTile(
       leading: Icon(icon, color: Colors.blueAccent),
@@ -731,20 +760,19 @@ class ContactMeSection extends StatelessWidget {
 }
 
 
-  Widget _buildContactTile(IconData icon, String title, String subtitle, String url) {
-    return ListTile(
-      leading: Icon(icon, color: Colors.blueAccent),
-      title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-      subtitle: Text(subtitle),
-      onTap: () async {
-        final Uri uri = Uri.parse(url);
-        if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-          debugPrint("Could not open $url");
-        }
-      },
-    );
-  }
-
+Widget _buildContactTile(IconData icon, String title, String subtitle, String url,{double fontSize = 28}) {
+  return ListTile(
+    leading: Icon(icon,size: 40, color: Colors.blueAccent),
+    title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+    subtitle: Text(subtitle),
+    onTap: () async {
+      final Uri uri = Uri.parse(url);
+      if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+        debugPrint("Could not open $url");
+      }
+    },
+  );
+}
 
 // Interactive SkillDiagram widget using CustomPaint.
 class SkillDiagram extends StatefulWidget {
